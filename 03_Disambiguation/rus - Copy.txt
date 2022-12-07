@@ -1,0 +1,35 @@
+DELIMITERS = "." ; #sentence window
+
+LIST PRP = PRP;
+LIST VERB = V VERB verb;
+LIST GEN = GEN gen ;
+LIST PRES = PRES ;
+LIST ADJ = ADJ ;
+LIST ADV = ADV ;
+LIST ACC = acc Acc ;
+LIST NOM = NOM ;
+LIST FIN = PAST PRES FUT past pres fut ;
+LIST NUM =  num NUM "<[0-9]+>"r ("млн" abbr) ("тыс" abbr)  ("млн" Abbr) ("тыс" Abbr) ;
+SET NGDAIP = nom OR gen OR dat OR acc OR ins OR prp ;
+
+SECTION
+## Safe operations after prepositions
+REMOVE NOM IF (-1C PRP ) ;
+REMOVE ADV IF (-1C PRP )(1 GEN) ;
+
+## Safe operations with preposition/adverb ambiguities
+REMOVE PRP IF (0C PRP  OR ADV) (1C NOM) ;
+REMOVE PRP IF (1C FIN) ;
+REMOVE PRP IF (-1C PRP) ;
+REMOVE PRP IF (1C PRP) ;
+
+## Safe operations with dates
+
+SELECT GEN IF (0 Year) (-1 NUM LINK -1 Months LINK -1 PRP/VERB) ;
+SELECT GEN IF (0 Year) (-1 NUM LINK -1 Months + GEN LINK -1 NUM) ;
+SELECT DAT IF (0 Year) (-1 NUM LINK -1 PRP) ; 
+
+REMOVE NGDAIP - Gen IF (-1C (”для”)) ; # Immediately after “для” remove any reading which is in a case other than genitive.
+REMOVE NOM IF (-1C (”в”)) ; #After “в” remove any reading which is in nominative
+
+#https://github.com/giellalt/lang-rus/blob/main/src/cg3/disambiguator.cg3
