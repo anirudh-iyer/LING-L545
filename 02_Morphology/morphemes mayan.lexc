@@ -1,0 +1,71 @@
+Multichar_Symbols 
+%<v%> !tzʼät
+%<tv%> 
+%<perf%> !x
+%> !Morpheme Boundary
+
+%<o_sg1%> !me 
+%<o_sg2%> !you
+%<o_sg3%> !he/she/it
+%<o_pl1%> !us
+%<o_pl2%> !you lot
+%<o_pl3%> !them
+
+%<s_sg1%> !I 
+%<s_sg2%> !You
+%<s_sg3%> !He/She/It
+%<s_pl1%> !We
+%<s_pl2%> !You lot
+%<s_pl3%> !They
+
+LEXICON Root
+Object;
+
+LEXICON StemVerb
+%<v%>:%>tzʼät #;
+
+LEXICON Object
+xa:xa SubjectYou; !you
+xix:xix SubjectYouLot; !you lot
+xi:xi SubjectMe; !me
+xoj:xoj SubjectUs; !us
+x:x SubjectHe; !he/she/it
+xe:xe SubjectThem; !them
+
+LEXICON SubjectYou
+%<s_pl3%>:ki StemVerb; !They
+%<s_sg1%>:nu StemVerb; !I
+%<s_sg3%>:ru StemVerb; !He/She
+%<s_pl1%>:qa StemVerb; !We
+
+LEXICON SubjectYouLot 
+%<s_sg3%>:ru StemVerb;
+%<s_pl1%>:qa StemVerb;
+%<s_pl3%>:ki StemVerb;
+
+LEXICON SubjectHim 
+%<s_sg1%>:nu StemVerb; !I
+%<s_sg2%>:a StemVerb; !you
+%<s_pl2%>:i StemVerb; !You lot
+%<s_pl1%>:qa StemVerb; !We
+%<s_pl3%>:ki StemVerb; !They
+
+LEXICON SubjectUs
+%<s_sg2%>:a StemVerb;
+%<s_sg3%>:tu StemVerb;
+%<s_pl2%>:'i StemVerb;
+%<s_pl3%>:ki StemVerb;
+
+LEXICON SubjectMe 
+%<s_sg2%>:na StemVerb;
+%<s_sg3%>:ru StemVerb;
+%<s_pl2%>:ni StemVerb;
+%<s_pl3%>:ki StemVerb;
+
+LEXICON SubjectThem 
+%<s_sg1%>:nu StemVerb;
+%<s_sg2%>:a StemVerb;
+%<s_sg3%>:ru StemVerb;
+%<s_pl1%>:qa StemVerb;
+%<s_pl2%>:'i StemVerb;
+%<s_pl3%>:ki StemVerb;
